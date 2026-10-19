@@ -1,41 +1,6 @@
 import { NextResponse } from "next/server";
-import { contact } from "@/data/site";
-import { buildInvoiceText } from "@/lib/invoice";
-import { acceptOrder, type Order } from "@/lib/order";
-import { appendOrderToSheet, type SheetLogResult } from "@/lib/order-sheet";
-
-type ChannelResult = SheetLogResult;
-
-async function sendOrderEmail(order: Order): Promise<ChannelResult> {
-  const key = process.env.WEB3FORMS_ACCESS_KEY;
-  if (!key) return "skipped";
-
-  try {
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      cache: "no-store",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        access_key: key,
-        subject: `TRUFINE invoice ${order.id} — ${order.customer.name}`,
-        from_name: "TRUFINE FOODS",
-        email: order.customer.email || contact.email,
-        name: order.customer.name,
-        phone: order.customer.phone,
-        address: order.customer.address,
-        payment: order.payment,
-        order_id: order.id,
-        invoice_no: order.id,
-        total: order.total,
-        message: buildInvoiceText(order),
-      }),
-    });
-    const data = (await response.json()) as { success?: boolean };
-    return response.ok && data.success !== false ? "logged" : "failed";
-  } catch {
-    return "failed";
-  }
-}
+import { acceptOrder } from "@/lib/order";
+import { appendOrderToSheet } from "@/lib/order-sheet";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -50,25 +15,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Invalid order." }, { status: 400 });
   }
 
-  const [email, sheet] = await Promise.all([
-    sendOrderEmail(order),
-    appendOrderToSheet(order),
-  ]);
-  const attempted = [email, sheet].filter((result) => result !== "skipped");
+  const sheet = await appendOrderToSheet(order);
 
-  if (attempted.length === 0) {
+  if (sheet === "skipped") {
     return NextResponse.json(
-      { ok: false, error: "Order inbox is not configured yet." },
+      { ok: false, error: "Order log is not configured yet.", sheet },
       { status: 503 },
     );
   }
 
-  if (attempted.every((result) => result === "failed")) {
+  if (sheet === "failed") {
     return NextResponse.json(
-      { ok: false, error: "Could not record the order.", email, sheet },
+      { ok: false, error: "Could not record the order.", sheet },
       { status: 502 },
     );
   }
 
-  return NextResponse.json({ ok: true, email, sheet });
+  return NextResponse.json({ ok: true, sheet });
 }

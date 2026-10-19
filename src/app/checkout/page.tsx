@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function CheckoutPage() {
-  return <CheckoutForm />;
+  return <CheckoutForm accessKey={process.env.WEB3FORMS_ACCESS_KEY ?? ""} />;
 }

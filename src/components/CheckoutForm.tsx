@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useCart } from "@/components/CartProvider";
 import { OrderTotals } from "@/components/OrderTotals";
+import { buildInvoiceText } from "@/lib/invoice";
 import {
   buildOrderMessage,
   formatINR,
@@ -14,12 +15,41 @@ import {
   ORDER_WHATSAPP_KEY,
   quoteCart,
   whatsappHref,
+  type Order,
   type PaymentMethod,
 } from "@/lib/order";
 
+async function sendInvoiceEmail(accessKey: string, order: Order) {
+  if (!accessKey) return false;
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: accessKey,
+        subject: `TRUFINE invoice ${order.id} — ${order.customer.name}`,
+        from_name: "TRUFINE FOODS",
+        email: order.customer.email,
+        name: order.customer.name,
+        phone: order.customer.phone,
+        address: order.customer.address,
+        payment: order.payment,
+        order_id: order.id,
+        invoice_no: order.id,
+        total: order.total,
+        message: buildInvoiceText(order),
+      }),
+    });
+    const data = (await response.json()) as { success?: boolean };
+    return response.ok && data.success !== false;
+  } catch {
+    return false;
+  }
+}
+
 const payments: PaymentMethod[] = ["Cash on delivery", "Pay on WhatsApp (UPI)"];
 
-export function CheckoutForm() {
+export function CheckoutForm({ accessKey }: { accessKey: string }) {
   const router = useRouter();
   const { lines, ready, clear } = useCart();
   const quote = useMemo(() => quoteCart(lines), [lines]);
@@ -96,17 +126,17 @@ export function CheckoutForm() {
             sessionStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(order));
             let invoiceEmailed = false;
             try {
-              const response = await fetch("/api/orders", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(order),
-              });
-              if (response.ok) {
-                const result = (await response.json()) as { email?: string };
-                invoiceEmailed = result.email === "logged";
-              }
+              const [, emailed] = await Promise.all([
+                fetch("/api/orders", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(order),
+                }),
+                sendInvoiceEmail(accessKey, order),
+              ]);
+              invoiceEmailed = emailed;
             } catch {
-              // WhatsApp still carries the order if email is not set up yet.
+              invoiceEmailed = false;
             }
             sessionStorage.setItem(INVOICE_EMAIL_KEY, invoiceEmailed ? "1" : "0");
             const opened = window.open(
