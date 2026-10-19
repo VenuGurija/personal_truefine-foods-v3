@@ -2,30 +2,30 @@
 
 const posts = [
   {
-    src: "/images/instagram/abc.jpg",
+    src: "/images/instagram/ganesha.jpg",
     handle: "@trufinefoods",
-    caption: "Tagged post",
+    caption: "A new beginning, a traditional blessing",
     kind: "Post",
     href: "https://www.instagram.com/p/DdRY_4FIHYg/",
   },
   {
-    src: "/images/instagram/beetroot.jpg",
+    src: "/images/instagram/launch-reel.jpg",
     handle: "@trufinefoods",
-    caption: "Tagged reel",
+    caption: "Launch of our dehydrated superfood powders",
     kind: "Reel",
     href: "https://www.instagram.com/reel/Deb8qZHIZ5d/",
   },
   {
-    src: "/images/instagram/carrot.jpg",
+    src: "/images/instagram/inauguration-reel.jpg",
     handle: "@trufinefoods",
-    caption: "Tagged reel",
+    caption: "Inauguration of TruFine Natural Powders",
     kind: "Reel",
     href: "https://www.instagram.com/reel/DelT3lxIZeB/",
   },
   {
-    src: "/images/instagram/moringa.jpg",
+    src: "/images/instagram/first-order-reel.jpg",
     handle: "@trufinefoods",
-    caption: "Tagged reel",
+    caption: "Delivering our very first order",
     kind: "Reel",
     href: "https://www.instagram.com/reel/Deqf9H7SYrM/",
   },
