@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #fbf2e7;
+  --cream-deep: #f6ead8;
+  --ink: #2c1238;
+  --muted: #5e4562;
+  --maroon: #2c1238;
+  --pink: #2c1238;
+  --gold: #f0b429;
+  --white: #ffffff;
+  --page: #ffffff;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-maroon: var(--maroon);
+  --color-pink: var(--pink);
+  --color-gold: var(--gold);
+  --font-serif: var(--font-sans);
+  --font-sans: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.font-serif {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 700;
+}
+
+@keyframes hero-kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes hero-flash {
+  0% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.15);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-core {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 1;
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-spark {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0.15);
+    opacity: 0;
+  }
+}
+
+.hero-kenburns {
+  animation: hero-kenburns 2.6s ease-out forwards;
+}
+
+.hero-flash {
+  animation: hero-flash 1.1s ease-out forwards;
+}
+
+.hero-ring {
+  animation: hero-ring 0.9s ease-out forwards;
+}
+
+.hero-core {
+  animation: hero-core 0.8s ease-out forwards;
+}
+
+.hero-spark {
+  animation: hero-spark 0.95s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-kenburns,
+  .hero-flash,
+  .hero-ring,
+  .hero-core,
+  .hero-spark {
+    animation: none;
+  }
+}
+
+@keyframes insta-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.insta-track {
+  animation: insta-slide 42s linear infinite;
+}
+
+.insta-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .insta-track {
+    animation: none;
+  }
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  font-size: 16px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--maroon);
+  outline-offset: 2px;
+}
