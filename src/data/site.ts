@@ -170,10 +170,15 @@ export const contact = {
   address: "8-86/1 Indira Nagar, Chityala, Nalgonda - 508114, Telangana, India",
 };
 
+export const seller = {
+  legalName: "TRUEFINE FOODS",
+  gstin: "",
+};
+
 export const shop = {
-  discountCode: "BUY3GET8%",
-  discountMinQty: 3,
-  discountRate: 0.08,
+  // discountCode: "BUY3GET8%",
+  // discountMinQty: 3,
+  // discountRate: 0.08,
   shippingFee: 130,
   freeShippingSubtotal: 1000,
 };

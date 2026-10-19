@@ -4,10 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
+import { InvoiceSheet } from "@/components/InvoiceSheet";
 import { OrderTotals } from "@/components/OrderTotals";
 import {
   buildOrderMessage,
   formatINR,
+  INVOICE_EMAIL_KEY,
   isOrder,
   ORDER_STORAGE_KEY,
   ORDER_WHATSAPP_KEY,
@@ -19,6 +21,7 @@ import {
 export function OrderConfirmation() {
   const [order, setOrder] = useState<Order | null>(null);
   const [whatsappOpened, setWhatsappOpened] = useState(false);
+  const [invoiceEmailed, setInvoiceEmailed] = useState(false);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -27,6 +30,7 @@ export function OrderConfirmation() {
       const parsed: unknown = raw ? JSON.parse(raw) : null;
       if (isOrder(parsed)) setOrder(parsed);
       setWhatsappOpened(sessionStorage.getItem(ORDER_WHATSAPP_KEY) === "1");
+      setInvoiceEmailed(sessionStorage.getItem(INVOICE_EMAIL_KEY) === "1");
     } catch {
       setOrder(null);
     }
@@ -62,8 +66,8 @@ export function OrderConfirmation() {
   });
 
   return (
-    <section className="mx-auto max-w-xl px-4 py-8 sm:px-5 md:py-14">
-      <article className="border border-ink/10 bg-white p-5 shadow-sm md:p-7">
+    <section className="mx-auto max-w-3xl px-4 py-8 sm:px-5 md:py-14">
+      <article className="border border-ink/10 bg-white p-5 shadow-sm print:hidden md:p-7">
         <div className="flex gap-3">
           <Check className="mt-1 shrink-0" size={18} aria-hidden />
           <div>
@@ -109,14 +113,35 @@ export function OrderConfirmation() {
         </div>
       </article>
 
-      <div className="mt-6 border border-ink/10 bg-white p-5">
+      <div className="mt-6">
+        <div className="mb-3 flex flex-col gap-3 print:hidden sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="font-serif text-3xl">Invoice</h2>
+            <p className="mt-1 text-sm text-muted">
+              {invoiceEmailed
+                ? "This invoice was emailed with the order."
+                : "Print or save this invoice. Email delivery did not go through."}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => window.print()}
+            className="border border-ink/20 px-5 py-3 text-[12px] tracking-[0.12em] uppercase"
+          >
+            Print invoice
+          </button>
+        </div>
+        <InvoiceSheet order={order} />
+      </div>
+
+      <div className="mt-6 border border-ink/10 bg-white p-5 print:hidden">
         <p className="text-[11px] tracking-[0.16em] uppercase text-maroon">
           Order {order.id}
         </p>
         <p className="mt-3 text-sm">
           {whatsappOpened
-            ? "WhatsApp opened with your order. Send that message so TRUEFINE receives it and you keep a copy in the chat."
-            : "Your browser did not open WhatsApp. Use the button below to send the order."}
+            ? "TRUEFINE has the order details. WhatsApp also opened so you can send a copy and keep the chat."
+            : "TRUEFINE has the order details. Use WhatsApp below if you also want a copy in chat."}
         </p>
         <details className="mt-4">
           <summary className="cursor-pointer text-[12px] tracking-[0.12em] uppercase">
@@ -149,7 +174,7 @@ export function OrderConfirmation() {
 
       <Link
         href="/products"
-        className="mt-6 inline-block text-[12px] tracking-[0.14em] uppercase text-maroon"
+        className="mt-6 inline-block text-[12px] tracking-[0.14em] uppercase text-maroon print:hidden"
       >
         Continue shopping
       </Link>

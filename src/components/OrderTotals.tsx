@@ -1,5 +1,5 @@
-import { Tag } from "lucide-react";
-import { shop } from "@/data/site";
+// import { Tag } from "lucide-react";
+// import { shop } from "@/data/site";
 import { formatINR, type Quote } from "@/lib/order";
 
 export function OrderTotals({
@@ -9,7 +9,7 @@ export function OrderTotals({
   quote: Quote;
   showHints?: boolean;
 }) {
-  const packsToDiscount = Math.max(0, shop.discountMinQty - quote.itemCount);
+  // const packsToDiscount = Math.max(0, shop.discountMinQty - quote.itemCount);
 
   return (
     <div>
@@ -20,7 +20,7 @@ export function OrderTotals({
           </dt>
           <dd>{formatINR(quote.subtotal)}</dd>
         </div>
-        {quote.discount > 0 ? (
+        {/* {quote.discount > 0 ? (
           <div className="flex items-start justify-between gap-4">
             <dt>
               Order discount
@@ -31,7 +31,7 @@ export function OrderTotals({
             </dt>
             <dd>-{formatINR(quote.discount)}</dd>
           </div>
-        ) : null}
+        ) : null} */}
         <div className="flex items-start justify-between gap-4">
           <dt>Shipping</dt>
           <dd>{quote.shipping === 0 ? "Free" : formatINR(quote.shipping)}</dd>
@@ -47,7 +47,7 @@ export function OrderTotals({
         </div>
       </dl>
       <p className="mt-2 text-xs text-muted">Prices include applicable taxes.</p>
-      {quote.discount > 0 ? (
+      {/* {quote.discount > 0 ? (
         <p className="mt-4 flex items-center gap-2 text-sm font-semibold">
           <Tag size={16} aria-hidden />
           Total savings {formatINR(quote.discount)}
@@ -58,7 +58,7 @@ export function OrderTotals({
           Add {packsToDiscount} more {packsToDiscount === 1 ? "pack" : "packs"} for 8%
           off with {shop.discountCode}.
         </p>
-      ) : null}
+      ) : null} */}
       {showHints && quote.shipping > 0 ? (
         <p className="mt-2 text-sm text-muted">
           Free shipping on orders of ₹1,000 or more.

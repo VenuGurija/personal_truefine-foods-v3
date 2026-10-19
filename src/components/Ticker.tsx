@@ -5,7 +5,7 @@ import Link from "next/link";
 import { shop } from "@/data/site";
 
 const messages = [
-  { href: "/products", text: "Dussehra · order today, 10% off your next order" },
+  // { href: "/products", text: "Dussehra · order today, 10% off your next order" },
   { href: "/products", text: "Retail packs ship across India" },
   {
     href: "/products",

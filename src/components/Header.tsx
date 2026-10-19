@@ -4,7 +4,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import { useCart } from "@/components/CartProvider";
 
 const links = [
@@ -71,13 +71,6 @@ export function Header() {
             >
               <Search size={22} strokeWidth={1.75} />
             </button>
-            <Link
-              href="/contact"
-              aria-label="Contact"
-              className="inline-flex h-10 w-10 items-center justify-center"
-            >
-              <User size={22} strokeWidth={1.75} />
-            </Link>
             <Link
               href="/cart"
               aria-label={count ? `Cart, ${count} items` : "Cart"}

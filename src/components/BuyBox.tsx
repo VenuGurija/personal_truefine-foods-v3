@@ -111,7 +111,8 @@ export function BuyBox({
         </Link>
       </div>
       <p className="mt-4 text-sm text-muted">
-        Buy 3 or more packs for 8% off. Shipping is ₹130, and free from ₹1,000.
+        {/* Buy 3 or more packs for 8% off. */}
+        Shipping is ₹130, and free from ₹1,000.
       </p>
     </div>
   );

@@ -15,7 +15,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="border-t border-maroon/10 bg-white text-maroon">
+    <footer className="border-t border-maroon/10 bg-white text-maroon print:hidden">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-5 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:py-14">
         <div>
           <h2 className="text-2xl font-bold tracking-wide">GET NOTIFIED</h2>

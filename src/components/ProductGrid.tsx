@@ -70,7 +70,7 @@ export function ProductGrid() {
   return (
     <section id="products" className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-14">
       <h2 className="text-center text-[1.65rem] leading-tight font-bold text-maroon sm:text-3xl md:text-4xl">
-        {query ? `Results for “${params.get("q")?.trim()}”` : "Powders for everyday cooking"}
+        {query ? `Results for “${params.get("q")?.trim()}”` : "Powders for everyday nutrition"}
       </h2>
       <svg
         viewBox="0 0 180 18"

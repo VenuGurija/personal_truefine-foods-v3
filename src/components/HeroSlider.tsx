@@ -208,7 +208,7 @@ export function HeroSlider() {
             <ChevronRight size={22} />
           </button>
 
-          <div className="pointer-events-auto absolute bottom-3 left-1/2 z-30 flex -translate-x-1/2 items-center rounded-full bg-white/80 px-1.5 py-1">
+          <div className="pointer-events-auto absolute bottom-3 left-1/2 z-30 flex -translate-x-1/2 items-center rounded-full bg-white/35 px-1.5 py-0.5 backdrop-blur-[2px]">
             {slides.map((item, dot) => (
               <button
                 key={item.id}
@@ -216,10 +216,10 @@ export function HeroSlider() {
                 aria-label={`Show slide ${dot + 1}`}
                 aria-current={dot === index ? "true" : undefined}
                 onClick={() => go(dot)}
-                className="flex h-8 w-8 items-center justify-center"
+                className="flex h-5 w-6 items-center justify-center"
               >
                 <span
-                  className={`h-2.5 rounded-full ${dot === index ? "w-6 bg-maroon" : "w-2.5 bg-maroon/30"}`}
+                  className={`h-1.5 rounded-full ${dot === index ? "w-4 bg-maroon" : "w-1.5 bg-maroon/40"}`}
                 />
               </button>
             ))}

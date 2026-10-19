@@ -14,7 +14,7 @@ This is a separate project from earlier TRUEFINE sites. Keep those on their own 
 - Bulk inquiry
 - About and contact
 
-Orders and the cart stay in the browser. Checkout opens WhatsApp with the order details. There is no database and no environment variables.
+The cart stays in the browser. Checkout emails the order through Web3Forms, appends one row to a Google Sheet when that log is configured, and opens WhatsApp with the same details.
 
 ## Stack
 
@@ -38,6 +38,21 @@ npm start
 
 ## Deploy on Vercel
 
-Import the GitHub repository above as a new Vercel project. Vercel detects Next.js. Use the default build command, `npm run build`. Leave the environment variables empty.
+Import the GitHub repository above as a new Vercel project. Vercel detects Next.js. Use the default build command, `npm run build`. Set the variables from `.env.example` in the Vercel project, then redeploy.
 
 Production ignores the local port `3001`. Vercel serves the app on its own URL.
+
+## Order log (Google Sheet)
+
+Each placed order can be one row in a Google Sheet you own. The sheet is free. No Make.com account is required.
+
+1. Create a Google Sheet, for example `TRUEFINE orders`.
+2. Open **Extensions → Apps Script** and replace the sample file with `scripts/google-sheet-order-log.gs`.
+3. Choose a long random secret. Put that same value in `SECRET` at the top of the script and in `GOOGLE_SHEET_SECRET`.
+4. **Deploy → New deployment → Web app**. Execute as **Me**. Who has access: **Anyone**.
+5. Copy the web app URL into `GOOGLE_SHEET_WEBHOOK_URL`.
+6. Place a test order. A tab named `Orders` appears, with the customer, packs, totals, and a Status dropdown (`New` through `Cancelled`).
+
+The first order creates the header row. Placing the same order id again does not add a second row. Email still sends when `WEB3FORMS_ACCESS_KEY` is set, even if the sheet variables are empty.
+
+Make.com’s free plan can do this later by appending each Web3Forms email to the sheet. Leave that until you want it; the Apps Script path already writes the row when checkout succeeds.

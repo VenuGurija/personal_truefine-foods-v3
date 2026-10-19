@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang="en-IN">
       <body className={`${sans.variable} font-sans antialiased`}>
         <CartProvider>
-          <div className="sticky top-0 z-50">
+          <div className="sticky top-0 z-50 print:hidden">
             <Ticker />
             <Header />
           </div>

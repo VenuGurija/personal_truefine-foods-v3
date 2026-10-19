@@ -1,39 +1,33 @@
 "use client";
 
-import { contact } from "@/data/site";
-
-const instagramUrl = `https://instagram.com/${contact.instagram}`;
-
 const posts = [
   {
     src: "/images/instagram/abc.jpg",
-    handle: "@kitchenwithkavya",
-    caption: "ABC mix in tonight’s smoothie bowl",
-    kind: "Reel",
+    handle: "@trufinefoods",
+    caption: "Tagged post",
+    kind: "Post",
+    href: "https://www.instagram.com/p/DdRY_4FIHYg/",
   },
   {
     src: "/images/instagram/beetroot.jpg",
-    handle: "@homeplate.hyd",
-    caption: "Beetroot raita, powder from the pack",
-    kind: "Post",
+    handle: "@trufinefoods",
+    caption: "Tagged reel",
+    kind: "Reel",
+    href: "https://www.instagram.com/reel/Deb8qZHIZ5d/",
   },
   {
     src: "/images/instagram/carrot.jpg",
-    handle: "@ammas.table",
-    caption: "Carrot juice for Sunday breakfast",
+    handle: "@trufinefoods",
+    caption: "Tagged reel",
     kind: "Reel",
+    href: "https://www.instagram.com/reel/DelT3lxIZeB/",
   },
   {
     src: "/images/instagram/moringa.jpg",
-    handle: "@dal.and.stories",
-    caption: "A pinch of moringa in the dal",
+    handle: "@trufinefoods",
+    caption: "Tagged reel",
     kind: "Reel",
-  },
-  {
-    src: "/images/instagram/amla.jpg",
-    handle: "@sipsoftly",
-    caption: "Amla drink after a long walk",
-    kind: "Post",
+    href: "https://www.instagram.com/reel/Deqf9H7SYrM/",
   },
 ] as const;
 
@@ -48,8 +42,8 @@ export function InstagramReviews() {
           <div key={copy} className="flex gap-4 pr-4">
             {posts.map((post) => (
               <a
-                key={`${copy}-${post.handle}`}
-                href={instagramUrl}
+                key={`${copy}-${post.href}`}
+                href={post.href}
                 target="_blank"
                 rel="noreferrer"
                 className="w-[68vw] max-w-[220px] shrink-0 overflow-hidden rounded-[16px] bg-white shadow-[0_6px_16px_rgba(44,18,56,0.08)] sm:w-[220px]"

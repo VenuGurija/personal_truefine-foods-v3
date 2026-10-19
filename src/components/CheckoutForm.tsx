@@ -9,6 +9,7 @@ import {
   buildOrderMessage,
   formatINR,
   normalizePhone,
+  INVOICE_EMAIL_KEY,
   ORDER_STORAGE_KEY,
   ORDER_WHATSAPP_KEY,
   quoteCart,
@@ -52,12 +53,12 @@ export function CheckoutForm() {
         </p>
         <h1 className="mt-3 font-serif text-4xl md:text-5xl">Checkout</h1>
         <p className="mt-4 max-w-xl text-muted">
-          Place the order here. WhatsApp opens with the full order so you can send
-          it in one tap. The same text can go by SMS.
+          Place the order here. An invoice is emailed with the order, and
+          WhatsApp opens so you can send the same order in one tap.
         </p>
         <form
           className="mt-8 grid gap-4 border border-ink/10 bg-white p-4 sm:p-6"
-          onSubmit={(event) => {
+          onSubmit={async (event) => {
             event.preventDefault();
             if (submitting) return;
             const form = new FormData(event.currentTarget);
@@ -93,6 +94,21 @@ export function CheckoutForm() {
             };
             const message = buildOrderMessage(order);
             sessionStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(order));
+            let invoiceEmailed = false;
+            try {
+              const response = await fetch("/api/orders", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(order),
+              });
+              if (response.ok) {
+                const result = (await response.json()) as { email?: string };
+                invoiceEmailed = result.email === "logged";
+              }
+            } catch {
+              // WhatsApp still carries the order if email is not set up yet.
+            }
+            sessionStorage.setItem(INVOICE_EMAIL_KEY, invoiceEmailed ? "1" : "0");
             const opened = window.open(
               whatsappHref(message),
               "_blank",
