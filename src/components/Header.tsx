@@ -54,7 +54,7 @@ export function Header() {
           <Link href="/" className="relative block h-11 w-[6.75rem] shrink-0 sm:h-14 sm:w-36 md:h-16 md:w-44">
             <Image
               src="/brand/logo.png"
-              alt="TRUEFINE FOODS"
+              alt="TRUFINE FOODS"
               fill
               sizes="(max-width: 640px) 108px, 176px"
               className="object-contain object-left"

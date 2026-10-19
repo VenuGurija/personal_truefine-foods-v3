@@ -22,8 +22,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "TRUEFINE FOODS — Dehydrated Products from India",
-    template: "%s | TRUEFINE FOODS",
+    default: "TRUFINE FOODS — Dehydrated Products from India",
+    template: "%s | TRUFINE FOODS",
   },
   description:
     "Premium dehydrated food ingredients from India for food businesses. Vegetable, fruit and botanical powders.",

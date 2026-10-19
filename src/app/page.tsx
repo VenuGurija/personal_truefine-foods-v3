@@ -10,7 +10,7 @@ const highlights = [
   },
   {
     title: "Made in Telangana",
-    text: "TRUEFINE FOODS works from Chityala, Nalgonda, with a direct line for bulk orders.",
+    text: "TRUFINE FOODS works from Chityala, Nalgonda, with a direct line for bulk orders.",
   },
   {
     title: "Retail and bulk",

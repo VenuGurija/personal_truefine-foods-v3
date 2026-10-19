@@ -140,8 +140,8 @@ export function OrderConfirmation() {
         </p>
         <p className="mt-3 text-sm">
           {whatsappOpened
-            ? "TRUEFINE has the order details. WhatsApp also opened so you can send a copy and keep the chat."
-            : "TRUEFINE has the order details. Use WhatsApp below if you also want a copy in chat."}
+            ? "TRUFINE has the order details. WhatsApp also opened so you can send a copy and keep the chat."
+            : "TRUFINE has the order details. Use WhatsApp below if you also want a copy in chat."}
         </p>
         <details className="mt-4">
           <summary className="cursor-pointer text-[12px] tracking-[0.12em] uppercase">

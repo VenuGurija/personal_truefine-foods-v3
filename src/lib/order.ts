@@ -151,7 +151,7 @@ export function buildOrderMessage(order: Order) {
   summary.push(`Total: ${formatINRPlain(order.total)}`);
 
   return [
-    "Hello TRUEFINE FOODS, I would like to place an order.",
+    "Hello TRUFINE FOODS, I would like to place an order.",
     "",
     `Order ID: ${order.id}`,
     "Order Details",

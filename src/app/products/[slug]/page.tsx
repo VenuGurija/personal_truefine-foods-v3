@@ -72,7 +72,7 @@ export default async function ProductPage({
             {product.packs?.length
               ? "Order a retail pack here. Bulk quantities and specifications are confirmed on inquiry."
               : product.available
-                ? "This product is part of the current TRUEFINE range. Commercial confirmation is made against each inquiry."
+                ? "This product is part of the current TRUFINE range. Commercial confirmation is made against each inquiry."
                 : "This product is listed for inquiry. Availability is confirmed against your requirement."}
           </p>
           {product.packs?.length ? (

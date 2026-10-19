@@ -11,7 +11,7 @@ export function Footer() {
     event.preventDefault();
     const address = email.trim();
     if (!address) return;
-    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent("TRUEFINE updates")}&body=${encodeURIComponent(address)}`;
+    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent("TRUFINE updates")}&body=${encodeURIComponent(address)}`;
   }
 
   return (
@@ -20,7 +20,7 @@ export function Footer() {
         <div>
           <h2 className="text-2xl font-bold tracking-wide">GET NOTIFIED</h2>
           <p className="mt-3 max-w-md text-sm text-muted">
-            Join TRUEFINE FOODS for updates on new powders and bulk availability.
+            Join TRUFINE FOODS for updates on new powders and bulk availability.
           </p>
           <form onSubmit={notify} className="mt-5 flex max-w-md flex-col gap-2 min-[420px]:flex-row">
             <input
@@ -93,7 +93,7 @@ export function Footer() {
         </div>
       </div>
       <p className="border-t border-maroon/10 px-4 py-4 pb-24 text-center text-xs text-muted">
-        © {new Date().getFullYear()} TRUEFINE FOODS
+        © {new Date().getFullYear()} TRUFINE FOODS
       </p>
     </footer>
   );

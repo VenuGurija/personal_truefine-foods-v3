@@ -47,7 +47,7 @@ export const products: Product[] = [
     category: "mix",
     description: "Amla, beetroot and carrot powder with vitamins, minerals and antioxidants.",
     detail:
-      "TRUEFINE ABC mix powder blends dehydrated amla, beetroot and carrot in a 100g retail pack. The label highlights vitamins, minerals and antioxidants. Bulk quantities are available on request.",
+      "TRUFINE ABC mix powder blends dehydrated amla, beetroot and carrot in a 100g retail pack. The label highlights vitamins, minerals and antioxidants. Bulk quantities are available on request.",
     image: "/images/products/abc-mix-label.jpg",
     accent: "#C45C26",
     available: true,
@@ -65,7 +65,7 @@ export const products: Product[] = [
     category: "vegetable",
     description: "Dehydrated beetroot powder, rich in iron, fiber and antioxidants.",
     detail:
-      "TRUEFINE beetroot powder is a dehydrated vegetable product in a 100g retail pack. The label highlights iron, fiber and antioxidants. Bulk quantities are available on request.",
+      "TRUFINE beetroot powder is a dehydrated vegetable product in a 100g retail pack. The label highlights iron, fiber and antioxidants. Bulk quantities are available on request.",
     image: "/images/products/beetroot-powder-label.jpg",
     accent: "#7A1E3A",
     available: true,
@@ -86,7 +86,7 @@ export const products: Product[] = [
     category: "fruit",
     description: "Dehydrated amla powder, rich in vitamin C and antioxidants.",
     detail:
-      "TRUEFINE amla powder is a dehydrated fruit powder in a 100g retail pack. The label highlights vitamin C and antioxidants. It is a food ingredient, not a medicinal product. Bulk quantities are available on request.",
+      "TRUFINE amla powder is a dehydrated fruit powder in a 100g retail pack. The label highlights vitamin C and antioxidants. It is a food ingredient, not a medicinal product. Bulk quantities are available on request.",
     image: "/images/products/amla-powder.jpg",
     accent: "#C6B15A",
     available: true,
@@ -107,7 +107,7 @@ export const products: Product[] = [
     category: "vegetable",
     description: "Dehydrated carrot powder, rich in vitamin A and beta-carotene.",
     detail:
-      "TRUEFINE carrot powder is a dehydrated vegetable product in a 100g retail pack. The label highlights vitamin A and beta-carotene. Bulk quantities are available on request.",
+      "TRUFINE carrot powder is a dehydrated vegetable product in a 100g retail pack. The label highlights vitamin A and beta-carotene. Bulk quantities are available on request.",
     image: "/images/products/carrot-powder-label.jpg",
     accent: "#C45C26",
     available: true,
@@ -128,7 +128,7 @@ export const products: Product[] = [
     category: "botanical",
     description: "Dehydrated moringa powder, rich in iron, calcium and antioxidants.",
     detail:
-      "TRUEFINE moringa powder is a dehydrated leaf powder in a 100g retail pack. The label highlights iron, calcium and antioxidants. It is a food ingredient, not a medicinal product. Bulk quantities are available on request.",
+      "TRUFINE moringa powder is a dehydrated leaf powder in a 100g retail pack. The label highlights iron, calcium and antioxidants. It is a food ingredient, not a medicinal product. Bulk quantities are available on request.",
     image: "/images/products/moringa-powder.jpg",
     accent: "#2D5A27",
     available: true,
@@ -171,7 +171,7 @@ export const contact = {
 };
 
 export const seller = {
-  legalName: "TRUEFINE FOODS",
+  legalName: "TRUFINE FOODS",
   gstin: "",
 };
 

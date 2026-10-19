@@ -15,35 +15,35 @@ const slides = [
     id: "abc",
     caption: "Amla, beetroot and carrot, blended into one bright everyday powder.",
     image: "/images/hero/abc-mix.jpg",
-    alt: "TRUEFINE ABC mix powder with fresh amla, beetroot and carrots",
+    alt: "TRUFINE ABC mix powder with fresh amla, beetroot and carrots",
     href: "/products/abc-mix-powder",
   },
   {
     id: "moringa",
     caption: "Tender moringa leaves, milled into a fine green powder.",
     image: "/images/hero/moringa.jpg",
-    alt: "TRUEFINE moringa powder with fresh moringa leaves and pods",
+    alt: "TRUFINE moringa powder with fresh moringa leaves and pods",
     href: "/products/moringa-leaf-powder",
   },
   {
     id: "carrot",
     caption: "Sun-sweet carrots, dried into a vivid powder full of colour.",
     image: "/images/hero/carrot-field.jpg",
-    alt: "TRUEFINE carrot powder with fresh carrots",
+    alt: "TRUFINE carrot powder with fresh carrots",
     href: "/products/carrot-powder",
   },
   {
     id: "beetroot",
     caption: "Deep red beetroot, powdered for a rich earthy colour.",
     image: "/images/hero/beetroot.jpg",
-    alt: "TRUEFINE beetroot powder with fresh beetroots",
+    alt: "TRUFINE beetroot powder with fresh beetroots",
     href: "/products/beetroot-powder",
   },
   {
     id: "amla",
     caption: "Tangy orchard amla, powdered for a bright, clean taste.",
     image: "/images/hero/amla.jpg",
-    alt: "TRUEFINE amla powder with fresh amla fruit",
+    alt: "TRUFINE amla powder with fresh amla fruit",
     href: "/products/amla-powder",
   },
 ] as const;
@@ -162,7 +162,7 @@ export function HeroSlider() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="relative w-full overflow-hidden bg-cream">
-        <h1 className="sr-only">TRUEFINE dehydrated powders</h1>
+        <h1 className="sr-only">TRUFINE dehydrated powders</h1>
         <div
           className="flex transition-transform duration-700 ease-out motion-reduce:transition-none"
           style={{ transform: `translateX(-${index * 100}%)` }}

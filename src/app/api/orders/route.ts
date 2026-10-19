@@ -17,8 +17,8 @@ async function sendOrderEmail(order: Order): Promise<ChannelResult> {
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
         access_key: key,
-        subject: `TRUEFINE invoice ${order.id} — ${order.customer.name}`,
-        from_name: "TRUEFINE FOODS",
+        subject: `TRUFINE invoice ${order.id} — ${order.customer.name}`,
+        from_name: "TRUFINE FOODS",
         email: order.customer.email || contact.email,
         name: order.customer.name,
         phone: order.customer.phone,
