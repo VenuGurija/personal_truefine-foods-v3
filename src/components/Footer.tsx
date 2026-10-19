@@ -85,7 +85,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Instagram
+                {`instagram.com/${contact.instagram}`}
               </a>
             </li>
             <li>{contact.address}</li>
